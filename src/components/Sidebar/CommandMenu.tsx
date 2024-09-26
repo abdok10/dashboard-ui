@@ -14,7 +14,7 @@ const navigation = [
   { name: "Home", href: "/", icon: RiHome3Fill },
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
   { name: "Accounts", href: "/accounts", icon: IoStatsChart },
-  { name: "Cards", href: "/Cards", icon: IoCard },
+  { name: "Cards", href: "/cards", icon: IoCard },
   { name: "transaction", href: "/transaction", icon: GrTransaction },
   { name: "integrations", href: "/integrations", icon: IoCard },
   { name: "payees", href: "/payees", icon: IoCard },
@@ -102,7 +102,7 @@ const CommandMenu = ({
                 className="cursor-pointer rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
               >
                 <Link
-                  href={nav.href}
+                  href={`/app${nav.href}`}
                   className="flex items-center gap-2"
                   onClick={(e) => e.stopPropagation()}
                 >

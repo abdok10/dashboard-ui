@@ -11,6 +11,7 @@ import { RiHome3Fill } from "react-icons/ri";
 import { PiSignOutFill } from "react-icons/pi";
 
 const navigation = [
+  { name: "Home", href: "/", icon: RiHome3Fill },
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
   { name: "Accounts", href: "/accounts", icon: IoStatsChart },
   { name: "Cards", href: "/Cards", icon: IoCard },
@@ -60,9 +61,9 @@ const CommandMenu = ({
           placeholder="Type a command or Search..."
         />
         <hr className="px-0" />
-        <Command.List className="mt-1 px-4">
+        <Command.List className="mt-1 px-4 py-1">
           <Command.Empty>
-            No results found for
+            No results found for{" "}
             <span className="text-violet-500">{value}</span>
           </Command.Empty>
 
@@ -91,13 +92,25 @@ const CommandMenu = ({
             </Command.Item>
           </Command.Group>
 
-          <Command.Group heading="Pages" className="text-stone-500">
-          {navigation.map((nav) => (
-        <Link href={nav.href} key={nav.name} className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-white hover:text-stone-700 hover:font-normal">
-          {<nav.icon />}
-          <span>{nav.name}</span>
-        </Link>
-      ))}
+          <Command.Group
+            heading="Pages"
+            className="mb-3 text-sm text-stone-400"
+          >
+            {navigation.map((nav) => (
+              <Command.Item
+                key={nav.name}
+                className="cursor-pointer rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
+              >
+                <Link
+                  href={nav.href}
+                  className="flex items-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {<nav.icon />}
+                  <span>{nav.name}</span>
+                </Link>
+              </Command.Item>
+            ))}
           </Command.Group>
 
           <Command.Item className="my-2 flex cursor-pointer items-center gap-2 rounded-md bg-stone-900 px-2 py-1 text-stone-50 hover:bg-stone-950">

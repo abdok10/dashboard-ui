@@ -1,6 +1,6 @@
 const Dashboard = () =>{
     return (
-        <main className="bg-stone-400 rounded-lg">
+        <main className="bg-white rounded-lg">
             Dashboard
         </main>
     )

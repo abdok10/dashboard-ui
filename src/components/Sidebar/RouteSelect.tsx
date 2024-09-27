@@ -18,7 +18,7 @@ const RouteSelect = () => {
     <main className="space-y-2 text-stone-500">
       {navigation.map((nav) => (
         <Link
-          href={`/app/${nav.href}`}
+          href={`${nav.href}`}
           key={nav.name}
           className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-white hover:font-normal hover:text-stone-700"
         >

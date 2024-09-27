@@ -18,6 +18,7 @@ const navigation = [
   { name: "transaction", href: "/transaction", icon: GrTransaction },
   { name: "integrations", href: "/integrations", icon: IoCard },
   { name: "payees", href: "/payees", icon: IoCard },
+  
   { name: "invoices", href: "/invoices", icon: IoCard },
 ];
 

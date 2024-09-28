@@ -2,23 +2,23 @@
 
 import { Command } from "cmdk";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Link from "next/link";
 
-import { FiEye, FiLink, FiLogOut, FiPhone, FiPlus } from "react-icons/fi";
+import { FiEye, FiLogOut, FiPlus } from "react-icons/fi";
+import { SiHomepage } from "react-icons/si";
 import { GrTransaction } from "react-icons/gr";
 import { IoCard, IoStatsChart } from "react-icons/io5";
 import { RiHome3Fill } from "react-icons/ri";
-import { PiSignOutFill } from "react-icons/pi";
+import { useRouter } from "next/navigation";
 
 const navigation = [
-  { name: "Home", href: "/", icon: RiHome3Fill },
+  { name: "Home", href: "/", icon: SiHomepage },
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
   { name: "Accounts", href: "/accounts", icon: IoStatsChart },
   { name: "Cards", href: "/cards", icon: IoCard },
   { name: "transaction", href: "/transaction", icon: GrTransaction },
   { name: "integrations", href: "/integrations", icon: IoCard },
   { name: "payees", href: "/payees", icon: IoCard },
-  
+
   { name: "invoices", href: "/invoices", icon: IoCard },
 ];
 
@@ -29,6 +29,7 @@ const CommandMenu = ({
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const router = useRouter();
   const [value, setValue] = useState("");
 
   useEffect(() => {
@@ -69,27 +70,24 @@ const CommandMenu = ({
           </Command.Empty>
 
           <Command.Group heading="Team" className="mb-3 text-sm text-stone-400">
-            <Command.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200">
+            <Command.Item
+              className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
+              tabIndex={0} // Make the item focusable
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  // Handle the Enter key
+                }
+              }}
+            >
               <FiPlus />
               Invite Member
             </Command.Item>
-            <Command.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200">
+            <Command.Item
+              className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
+              tabIndex={0}
+            >
               <FiEye />
               See Org Chart
-            </Command.Item>
-          </Command.Group>
-
-          <Command.Group
-            heading="Integrations"
-            className="mb-3 text-sm text-stone-400"
-          >
-            <Command.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200">
-              <FiLink />
-              Link Services
-            </Command.Item>
-            <Command.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200">
-              <FiPhone />
-              Contact Support
             </Command.Item>
           </Command.Group>
 
@@ -100,21 +98,31 @@ const CommandMenu = ({
             {navigation.map((nav) => (
               <Command.Item
                 key={nav.name}
-                className="cursor-pointer rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
+                tabIndex={0}
+                className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setOpen(false);
+                    router.push(nav.href);
+                  }
+                }}
+                onClick={() => setOpen(false)}
               >
-                <Link
-                  href={`/app${nav.href}`}
-                  className="flex items-center gap-2"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {<nav.icon />}
-                  <span>{nav.name}</span>
-                </Link>
+                {<nav.icon />}
+                {nav.name}
               </Command.Item>
             ))}
           </Command.Group>
 
-          <Command.Item className="my-2 flex cursor-pointer items-center gap-2 rounded-md bg-stone-900 px-2 py-1 text-stone-50 hover:bg-stone-950">
+          <Command.Item
+            className="my-2 flex cursor-pointer items-center gap-2 rounded-md bg-stone-900 px-2 py-1 text-stone-50 hover:bg-stone-950 "
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                console.log("*****Signed Out*****");
+              }
+            }}
+          >
             <FiLogOut />
             Sign Out
           </Command.Item>

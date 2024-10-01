@@ -1,25 +1,27 @@
 "use client";
 
-import { Command } from "cmdk";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
+import { Command } from "cmdk";
 import { FiEye, FiLogOut, FiPlus } from "react-icons/fi";
 import { SiHomepage } from "react-icons/si";
-import { GrTransaction } from "react-icons/gr";
-import { IoCard, IoStatsChart } from "react-icons/io5";
 import { RiHome3Fill } from "react-icons/ri";
-import { useRouter } from "next/navigation";
+import {
+  FiDollarSign,
+  FiLink,
+  FiPaperclip,
+  FiUsers,
+} from "react-icons/fi";
 
 const navigation = [
   { name: "Home", href: "/", icon: SiHomepage },
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
-  { name: "Accounts", href: "/accounts", icon: IoStatsChart },
-  { name: "Cards", href: "/cards", icon: IoCard },
-  { name: "transaction", href: "/transaction", icon: GrTransaction },
-  { name: "integrations", href: "/integrations", icon: IoCard },
-  { name: "payees", href: "/payees", icon: IoCard },
-
-  { name: "invoices", href: "/invoices", icon: IoCard },
+  { name: "Team", href: "/team", icon: FiUsers },
+  { name: "Integrations", href: "/integrations", icon: FiPaperclip },
+  { name: "Invoices", href: "/invoices", icon: FiLink },
+  { name: "Finance", href: "/finance", icon: FiDollarSign },
 ];
 
 const CommandMenu = ({
@@ -96,10 +98,10 @@ const CommandMenu = ({
             className="mb-3 text-sm text-stone-400"
           >
             {navigation.map((nav) => (
-              <Command.Item
+              <Link
                 key={nav.name}
+                href={nav.href}
                 tabIndex={0}
-                className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     setOpen(false);
@@ -108,14 +110,16 @@ const CommandMenu = ({
                 }}
                 onClick={() => setOpen(false)}
               >
-                {<nav.icon />}
-                {nav.name}
-              </Command.Item>
+                <Command.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-stone-950 transition-colors hover:bg-stone-200">
+                  {<nav.icon />}
+                  {nav.name}
+                </Command.Item>
+              </Link>
             ))}
           </Command.Group>
 
           <Command.Item
-            className="my-2 flex cursor-pointer items-center gap-2 rounded-md bg-stone-900 px-2 py-1 text-stone-50 hover:bg-stone-950 "
+            className="my-2 flex cursor-pointer items-center gap-2 rounded-md bg-stone-900 px-2 py-1 text-stone-50 hover:bg-stone-950"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter") {

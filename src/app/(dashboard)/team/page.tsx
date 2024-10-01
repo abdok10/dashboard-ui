@@ -1,8 +1,8 @@
-const AccountsPage = () => {
+const TeamPage = () => {
   return (
     <div className="bg-white rounded-lg flex justify-center pt-20 font-bold text-4xl">
-      Accounts page
+      Team page
     </div>
   );
 };
-export default AccountsPage;
+export default TeamPage;

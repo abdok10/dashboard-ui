@@ -3,18 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { GrTransaction } from "react-icons/gr";
-import { IoCard, IoStatsChart } from "react-icons/io5";
-import { RiHome3Fill } from "react-icons/ri";
+
+import { RiHome3Fill } from "react-icons/ri"
+import {
+  FiDollarSign,
+  FiLink,
+  FiPaperclip,
+  FiUsers,
+} from "react-icons/fi";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
-  { name: "Accounts", href: "/accounts", icon: IoStatsChart },
-  { name: "Cards", href: "/cards", icon: IoCard },
-  { name: "transaction", href: "/transaction", icon: GrTransaction },
-  { name: "integrations", href: "/integrations", icon: IoCard },
-  { name: "payees", href: "/payees", icon: IoCard },
-  { name: "invoices", href: "/invoices", icon: IoCard },
+  { name: "Team", href: "/team", icon: FiUsers },
+  { name: "Integrations", href: "/integrations", icon: FiPaperclip },
+  { name: "Invoices", href: "/invoices", icon: FiLink },
+  { name: "Finance", href: "/finance", icon: FiDollarSign },
 ];
 
 const RouteSelect = () => {

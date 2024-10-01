@@ -33,9 +33,12 @@ const RouteSelect = () => {
         <Link
           href={nav.href}
           key={nav.name}
-          className={`${pathname == nav.href ? "bg-white text-stone-800" : "hover:bg-stone-200 hover:font-normal hover:text-stone-700"} transition-all flex items-center gap-2  w-full rounded-md px-2 py-1`}
+          className={`${pathname == nav.href ? "bg-white text-stone-950 shadow" : "hover:bg-stone-200 hover:font-normal hover:text-stone-700"} transition-all flex items-center gap-2  w-full rounded-md px-2 py-1`}
         >
+          <span className={pathname == nav.href ? "text-violet-500" : ""}>
+
           {<nav.icon />}
+          </span>
           <span>{nav.name}</span>
         </Link>
       ))}

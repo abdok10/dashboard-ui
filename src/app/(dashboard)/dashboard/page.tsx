@@ -1,8 +1,10 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import Grid from "@components/Dashboard/Grid";
+import TopBar from "@components/Dashboard/TopBar";
 
 const Home = () => {
-  return <main className="rounded-lg bg-white">Dashboard</main>;
+  return <main className="rounded-xl pb-4 bg-white shadow">
+    <TopBar />
+    <Grid />
+  </main>;
 };
 export default Home;

@@ -5,8 +5,8 @@ import Plan from "@components/Sidebar/Plan";
 
 const Sidebar = () => {
   return (
-    <main className="flex flex-col justify-between">
-      <div className="overflow-y-scroll sticky pr-2 top-4 h-[calc(100vh-32px-48px)]">
+    <main>
+      <div className="sticky top-4 h-[calc(100vh-32px-48px)] overflow-y-scroll">
         <AccountToggle />
         <Search />
         <RouteSelect />
@@ -15,7 +15,6 @@ const Sidebar = () => {
       <Plan />
     </main>
   );
-  
 };
 
 export default Sidebar;

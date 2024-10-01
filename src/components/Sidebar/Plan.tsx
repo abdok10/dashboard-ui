@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Plan = () => {
   return (
     <div className="flex sticky top-[calc(100vh_-_48px_-_16px)] flex-col h-12 border-t px-2 border-stone-300 justify-end text-xs">
@@ -7,9 +9,12 @@ const Plan = () => {
         <p className="text-stone-500">Pay as you go</p>
       </div>
 
-      <button className="px-2 py-1.5 font-medium bg-stone-200 hover:bg-stone-300 transition-colors rounded">
+      <Link 
+        href="https://github.com/abdok10"
+        target="_blank" 
+        className="px-2 py-1.5 font-medium bg-stone-200 hover:bg-stone-300 transition-colors rounded">
         Support
-      </button>
+      </Link>
     </div>
   </div>
   );

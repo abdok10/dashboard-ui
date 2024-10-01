@@ -1,4 +1,3 @@
-import React from "react";
 import { FiCalendar } from "react-icons/fi";
 
 const TopBar = () => {
@@ -6,7 +5,7 @@ const TopBar = () => {
     <div className="border-b px-4 mb-4 mt-2 pb-4 border-stone-300">
       <div className="flex items-center justify-between p-0.5">
         <div>
-          <span className="text-sm font-bold block">🚀 Good morning, Tom!</span>
+          <span className="text-sm font-bold block">🚀 hey, Abdo!</span>
           <span className="text-xs block text-stone-500">
             Tuesday, October 1st 2024
           </span>

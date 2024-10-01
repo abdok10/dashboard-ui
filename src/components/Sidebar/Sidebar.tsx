@@ -6,7 +6,8 @@ import Plan from "@components/Sidebar/Plan";
 const Sidebar = () => {
   return (
     <main>
-      <div className="sticky top-4 h-[calc(100vh-32px-48px)] overflow-y-scroll">
+      <div className="sticky top-4 h-[calc(100vh-32px-48px)] overflow-y-scroll scrollbar-hide">
+        {/*TODO - keep the scroll but not the scroll bar */}
         <AccountToggle />
         <Search />
         <RouteSelect />
